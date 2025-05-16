@@ -22,7 +22,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Categories::all();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -33,6 +34,7 @@ class PostsController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'category_id' => 'required|exists:categories,id',
             'fotografija' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('content')
     <h1>Categories</h1>
 
     <a href="{{ route('categories.create') }}">+ Add Category</a>
 
-    @if(session('success'))
+    @if (session('success'))
         <div>{{ session('success') }}</div>
     @endif
 

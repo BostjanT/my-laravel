@@ -8,8 +8,11 @@
 @section('content')
     <div class="container">
         <h1>Zadnje tri objave</h1>
+        <div class="flex gap-8 mb-2">
 
-        <a href="{{ route('posts.create') }}">Create New Post</a>
+            <a href="{{ route('posts.create') }}">Ustvari novo objavo</a>
+            <a href="{{ route('categories.create') }}">Ustvari novo kategorijo</a>
+        </div>
         @foreach ($latestPosts as $post)
             <div>
                 <div class="post">
@@ -18,7 +21,7 @@
                     </h2>
                     <p><strong>Kategorija:</strong> {{ $post->category?->name ?? 'Ni določena' }}</p>
                     <p>{{ Str::limit($post->content, 150) }}</p>
-                    <img src="{{ asset('storage/' . $post->fotografija) }}" alt="Post image">
+                    <img src="{{ asset('storage/' . $post->fotografija) }}" alt="Post image" class="max-w-md rounded-lg">
                 </div>
         @endforeach
         <div class="category">
